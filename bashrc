@@ -133,24 +133,39 @@ alias ls='ls --color=auto --group-directories-first'
 alias lh='ls -lh'
 alias ll='ls -l'
 alias lsr='ls -R'
+alias less='less -r'
 alias du='du -h'
 alias df='df -h'
 alias rb='make clean && make release'
 alias rbd='make clean && make debug'
+alias ipc='grep CommittedInstructionsPerCycle'
+alias sq='squeue'
 alias sendemail='sendemail -f rbera@iitk.ac.in -s mmtp.iitk.ac.in:25 -o tls=yes -xu rbera -xp winFast' 
+alias bfg='java -jar /home/rbera/work/softwares/bfg-1.12.14.jar'
 
-turing="rbera@turing.cse.iitk.ac.in"
-cse="rbera@csecourses2.cse.iitk.ac.in"
-anirban="manirban@172.27.20.155"
-thunderclap="rbera@172.27.30.178"
-m2shome="/home/rbera/work/multi2sim-modified/src"
 ds2home="/home/rbera/work/DRAMSim2"
 pinhome="/home/rbera/work/pin"
 traces="/home/rbera/work/traces/spec06"
 
+# Machines
+turing="rbera@turing.cse.iitk.ac.in"
+cse="rbera@csecourses2.cse.iitk.ac.in"
+pprserver="rbera@pprserver.cse.iitk.ac.in"
+anirban="manirban@172.27.20.155"
+gpu1="rbera@gpu01.cc.iitk.ac.in"
+
+recursive="rbera@172.27.20.172"
+minion1="rbera@172.27.22.111"
+minion2="rbera@172.27.22.52"
+minion3="rbera@172.27.22.179"
+minion4="rbera@172.27.30.15"
+minion5="rbera@172.27.22.189"
+
+M2S_HOME=/home/rbera/work/multi2sim-modified
 LARK_HOME=/home/rbera/work/scripts
-PATH=$PATH:$m2shome:$ds2home:$pinhome:/home/rbera/work/scripts/bin:/home/rbera/work/sim:/home/rbera/work/offline-cache/bin
+PATH=$PATH:$ds2home:$pinhome:/home/rbera/work/scripts/bin:/home/rbera/work/sim:/home/rbera/work/offline-cache/src
 LD_LIBRARY_PATH=/home/rbera/work/zlib:$LD_LIBRARY_PATH
+PKG_CONFIG_PATH=${HOME}/local/lib/pkgconfig:${PKG_CONFIG_PATH}
 
 install()
 { 	

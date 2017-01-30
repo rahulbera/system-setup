@@ -54,11 +54,14 @@ syntax on
 set background=dark
 set number
 colo wellsokai
-set title
 set wrap
 set incsearch
 set hlsearch
 set cindent
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 
 nmap <F8> :TagbarToggle<CR>
 nmap <silent> <F7> :NERDTreeTabsToggle<CR>
@@ -68,7 +71,9 @@ nmap <F6> :tabn<CR>
 imap <F6> :tabn<CR>
 nmap <F5> :tabp<CR>
 imap <F5> :tabp<CR>
-
 inoremap <c-s> <c-o>:Update<CR>
-
+nnoremap <Space> za
 set t_Co=256
+
+set cursorline 
+hi CursorLine cterm=NONE ctermbg=black 
