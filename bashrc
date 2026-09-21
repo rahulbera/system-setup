@@ -18,6 +18,7 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
+SHELL_SESSION_HISTORY=0
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -75,7 +76,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    #alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -113,7 +114,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias vi='vim'
@@ -127,8 +127,6 @@ alias diff='colordiff'
 alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
-alias update='sudo apt-get update'
-alias upgrade='sudo apt-get upgrade'
 alias ls='ls --color=auto --group-directories-first'
 alias lh='ls -lh'
 alias ll='ls -l'
@@ -136,46 +134,8 @@ alias lsr='ls -R'
 alias less='less -r'
 alias du='du -h'
 alias df='df -h'
-alias rb='make clean && make release'
-alias rbd='make clean && make debug'
-alias ipc='grep CommittedInstructionsPerCycle'
-alias sq='squeue'
-alias sendemail='sendemail -f rbera@iitk.ac.in -s mmtp.iitk.ac.in:25 -o tls=yes -xu rbera -xp winFast' 
-alias bfg='java -jar /home/rbera/work/softwares/bfg-1.12.14.jar'
 
-ds2home="/home/rbera/work/DRAMSim2"
-pinhome="/home/rbera/work/pin"
-traces="/home/rbera/work/traces/spec06"
-
-# Machines
-turing="rbera@turing.cse.iitk.ac.in"
-cse="rbera@csecourses2.cse.iitk.ac.in"
-pprserver="rbera@pprserver.cse.iitk.ac.in"
-anirban="manirban@172.27.20.155"
-gpu1="rbera@gpu01.cc.iitk.ac.in"
-
-recursive="rbera@172.27.20.172"
-minion1="rbera@172.27.22.111"
-minion2="rbera@172.27.22.52"
-minion3="rbera@172.27.22.179"
-minion4="rbera@172.27.30.15"
-minion5="rbera@172.27.22.189"
-
-M2S_HOME=/home/rbera/work/multi2sim-modified
-LARK_HOME=/home/rbera/work/scripts
-PATH=$PATH:$ds2home:$pinhome:/home/rbera/work/scripts/bin:/home/rbera/work/sim:/home/rbera/work/offline-cache/src
-LD_LIBRARY_PATH=/home/rbera/work/zlib:$LD_LIBRARY_PATH
-PKG_CONFIG_PATH=${HOME}/local/lib/pkgconfig:${PKG_CONFIG_PATH}
-
-install()
-{ 	
-	sudo apt-get install $@
-}
-
-remove()
-{
-	sudo apt-get autoremove $@
-}
+export PATH="$HOME/.local/bin:$PATH"
 
 parse_git_branch() 
 {
@@ -187,3 +147,29 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
 	export TERM=xterm-256color
 fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/rbera/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/rbera/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/rbera/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/rbera/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# opencode
+export PATH=/home/rbera/.opencode/bin:$PATH
+
+# >>> oh-my-opencode-slim background subagents >>>
+export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=true
+export OPENCODE_ENABLE_EXA=1
+# <<< oh-my-opencode-slim background subagents <<<
