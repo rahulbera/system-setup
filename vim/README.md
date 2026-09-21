@@ -61,9 +61,16 @@ export PATH="$(brew --prefix llvm)/bin:$PATH"
 
 ### Icons (optional but recommended)
 
-Install and select a **Nerd Font** in your terminal. Without one, icons render
-as empty boxes. Everything else works regardless. (See the Fern note under
-[Notes / gotchas](#notes--gotchas).)
+Install and select a **Nerd Font** in your terminal. Without one, the devicons
+in Fern and the statusline render as empty boxes. Everything else works
+regardless. To check whether your terminal already has one:
+
+```bash
+printf '\ue606 \ue61d \ue613\n'   # Python, C++ and folder icons
+```
+
+Over SSH, the font must be installed on the machine you type on, not the
+server: the local terminal draws the glyphs.
 
 ---
 
@@ -162,6 +169,7 @@ The versions in `pack.tar.gz`:
 | lambdalisue/fern-git-status.vim         | `1513363` |
 | lambdalisue/fern-renderer-devicons.vim  | `d0f7264` |
 | lambdalisue/fern-hijack.vim             | `f655248` |
+| ryanoasis/vim-devicons                  | `71f239a` |
 | liuchengxu/vim-which-key                | `72a4267` |
 
 To refresh the snapshot after updating plugins on a machine:
@@ -214,6 +222,7 @@ function! s:packager_init(packager) abort
       \ 'lambdalisue/fern-git-status.vim',
       \ 'lambdalisue/fern-renderer-devicons.vim',
       \ 'lambdalisue/fern-hijack.vim'] })
+    call a:packager.add('ryanoasis/vim-devicons')
     call a:packager.add('liuchengxu/vim-which-key')
 endfunction
 
@@ -407,11 +416,10 @@ To add a language, add an entry to `lspServers` plus `g:ale_linters` /
   silently ignores `~/.vim/vimrc`. Keep only one.
 - **First-launch errors are normal** with option B. They disappear once
   `:PackagerInstall` has run and Vim is restarted. Option A has none.
-- **Fern icons need `ryanoasis/vim-devicons`, which this vimrc does not
-  install.** With `g:fern#renderer = "devicons"` set, Fern logs
-  `WebDevIconsGetFileTypeSymbol is not found` and falls back to its plain
-  renderer. To get icons, add `call a:packager.add('ryanoasis/vim-devicons')` to
-  the plugin list, run `:PackagerInstall`, and use a Nerd Font.
+- **Icons come from `ryanoasis/vim-devicons`.** Fern's `devicons` renderer
+  needs it; without it, Fern logs `WebDevIconsGetFileTypeSymbol is not found`
+  and falls back to its plain renderer. The mistfly statusline also picks it up
+  and shows a filetype icon. Both need a Nerd Font in the terminal.
 - **Autosave is on and swapfiles are off.** Buffers are written on
   `InsertLeave`, `TextChanged` and `FocusLost`.
 - **fzf on the shell side.** `~/.fzf` must point at the plugin's fzf directory,

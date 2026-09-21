@@ -35,6 +35,7 @@ function! s:packager_init(packager) abort
       \ 'lambdalisue/fern-git-status.vim',
       \ 'lambdalisue/fern-renderer-devicons.vim',
       \ 'lambdalisue/fern-hijack.vim'] })
+    call a:packager.add('ryanoasis/vim-devicons')
     call a:packager.add('liuchengxu/vim-which-key')
 endfunction
 
