@@ -1,7 +1,7 @@
 # system-setup
 
 My shell and Vim setup, for replicating on a fresh Ubuntu machine. Snapshot
-taken from Ubuntu 24.04 (x86_64) with Vim 9.1.
+taken from my mintiron Ubuntu 24.04 (x86_64) with Vim 9.1.
 
 | Repo file         | Installs to        | What it is                                                           |
 | ----------------- | ------------------ | -------------------------------------------------------------------- |
